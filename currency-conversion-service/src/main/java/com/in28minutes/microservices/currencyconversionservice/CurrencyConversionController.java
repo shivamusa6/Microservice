@@ -43,7 +43,7 @@ public class CurrencyConversionController {
                                                   @PathVariable String to,
                                                   @PathVariable BigDecimal quantity) {
         CurrencyConversionBean response =currencyExchangeServiceProxy.retrieveExchangeValue(from, to);
-        return new CurrencyConversionBean(response.getId(),from,to,environment.getProperty("local.server.port"),
+        return new CurrencyConversionBean(response.getId(),from,to,response.getPort(),
                 response.getConversionMultiple(),quantity,quantity.multiply(response.getConversionMultiple()));
 
     }
