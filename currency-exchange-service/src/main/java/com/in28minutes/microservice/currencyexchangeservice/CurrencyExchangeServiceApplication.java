@@ -1,5 +1,6 @@
 package com.in28minutes.microservice.currencyexchangeservice;
 
+import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -12,4 +13,7 @@ public class CurrencyExchangeServiceApplication {
 		SpringApplication.run(CurrencyExchangeServiceApplication.class, args);
 	}
 
+	public Sampler defaultSampler(){
+		return Sampler.ALWAYS_SAMPLE;
+	}
 }

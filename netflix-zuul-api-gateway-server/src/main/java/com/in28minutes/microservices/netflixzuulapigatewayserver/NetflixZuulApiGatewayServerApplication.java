@@ -1,5 +1,6 @@
 package com.in28minutes.microservices.netflixzuulapigatewayserver;
 
+import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,4 +15,7 @@ public class NetflixZuulApiGatewayServerApplication {
 		SpringApplication.run(NetflixZuulApiGatewayServerApplication.class, args);
 	}
 
+	public Sampler defaultSampler(){
+		return Sampler.ALWAYS_SAMPLE;
+	}
 }
