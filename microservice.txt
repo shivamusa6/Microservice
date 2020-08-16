@@ -1,0 +1,90 @@
+MicroService 
+
+Challenges of microservice 
+1.Decide Boundaries of microservice
+2.Configuration  management
+3.Visiblity and Monitoring 
+4.fault tolerance 
+5.Dynamic scale up and scale down 
+
+Solution to challenges provided by spring cloud 
+
+1.Configuration Management -> 
+
+Spring Cloud Config Server:-
+Provides an approach where you can store all configuration for all
+the different environment of all the microservices in a Git repository.
+So you can store all the configuration for different environments of different microservices in just
+one place in a centralized location and spring cloud config server can be used to expose that configuration
+to all the microservices.
+This helps us to keep the configuration in one place and that makes it very easy to maintain the configuration
+for all the MicroServices.
+
+
+2.Dynamic scale up and scale down ->
+
+Eureka (Naming Server):-
+So all the instances of all MicroServices would register with the naming server.
+So the naming server has two important features.
+One is service registration so all microservices.
+Can register with the microservicew one the second one is service discovery.
+So in this example the currency calculation service can ask the Eureka naming server Hey naming server
+give me the current instances of currency exchange service and the naming service would provide those
+URLs to the currency calculations.
+this helps to establish dynamic relationship between the currency calculation service and the instances
+of the currency exchange service.
+
+Ribbon (Client Side Load Balancing):-
+We will use Ribbon for client side load balancing.
+That means the currency calculation service will host ribbon and it would make sure that the load is
+evenly distributed among the existing instances that it gets from the naming server 
+
+Feign(Easier REST client):-
+Feign in the currency calculation service as a mechanism to write simple RESTful client
+
+
+3.Visiblity and Monitoring  ->
+
+Zipkin Distributed Tracing Server:-
+We would use Spring cloud Sloat to assign ID to request across multiple components and we would use
+the Zipkin distributed tracing to trace a request across multiple components.
+
+Netflix API Gateway :-
+One of the important things about microservices is these microservices have a lot of common features.
+For example logging security analytics and things like that you don't want to implement all these common
+features in every microservice.API Gateways provide great solutions to these kind of challenges.
+We will use a Netflix Zuel API gateway in this could.
+
+4.Fault Tolerance :-
+
+Hystrix:-
+We will also implement fault tolerance using hystrix if a service is down.Hystrix help us to configure a default response
+
+
+
+Advantage of MicroService
+1.Each microservice can we written in different programming language 
+2.Dynamic Scaling based on load 
+3.Faster Release Cycle 
+
+
+
+Spring Cloud Config server:-
+
+@EnableConfigServer
+
+
+Feign:-
+1.@EnableFeignClients("com.in28minutes.microservices.currencyconversionservice")
+2.Create Proxy for the client
+
+
+
+SET RABBIT_URI=amqp://localhost
+
+java -jar zipkin-server-2.21.7-SNAPSHOT-exec.jar
+
+
+Sping cloud bus :-Refresh the configuration of all the instance of a microservice running.
+localhost:8080/actutor/bus-refresh
+
